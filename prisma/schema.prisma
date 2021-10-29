@@ -16,4 +16,15 @@ model Partner {
   location     String
   phone        Int
   email        String 
+  leads        Lead[]
+}
+
+model Lead {
+  id           Int     @default(autoincrement()) @id
+  firstName    String
+  lastName     String
+  email        String
+  phone        Int
+  refererId    Int
+  referer      Partner @relation(fields:[refererId], references:[id])
 }
